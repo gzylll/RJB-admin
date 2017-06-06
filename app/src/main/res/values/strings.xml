@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">RJB-2</string>
+    <string name="uploadimg">上传图片</string>
+    <string name="export">导出标签</string>
+    <string name="users">查看用户</string>
+    <string name="admin">管理员</string>
+    <string name="selectIMG">选择图片</string>
+    <string name="refresh">刷新</string>
+    <string name="setting">设置</string>
+    <string name="logout">退出登录</string>
+    <string name="uploadcount">一次选择的图片数量</string>
+    <string name="uid">UID:</string>
+    <string name="username">用户名:</string>
+    <string name="phone">手机号:</string>
+    <string name="email">邮箱:</string>
+    <string name="password">密码:</string>
+    <string name="hobbies">爱好:</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="changePassword">管理员修改用户密码</string>
+</resources>
