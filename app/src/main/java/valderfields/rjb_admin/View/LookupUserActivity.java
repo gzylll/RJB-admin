@@ -79,7 +79,6 @@ public class LookupUserActivity extends AppCompatActivity implements AdapterView
     {
         this.dataList.clear();
         this.dataList.addAll(dataList);
-        Log.i("1",dataList.toString());
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

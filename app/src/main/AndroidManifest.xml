@@ -33,8 +33,10 @@
         <activity
             android:name=".View.LookupUserActivity"
             android:parentActivityName=".View.MainActivity" />
-        <activity android:name=".View.AdminActivity"
-            android:parentActivityName=".View.MainActivity"></activity>
+        <activity
+            android:name=".View.AdminActivity"
+            android:parentActivityName=".View.MainActivity" />
+        <activity android:name=".View.MyInfoActivity"></activity>
     </application>
 
 </manifest>

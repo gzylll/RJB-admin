@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!--个人信息-->
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="170dp"
@@ -48,6 +49,7 @@
 
         </android.support.v7.widget.CardView>
 
+        <!--选项-->
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -61,6 +62,12 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void showImgCountDialog(){
+//        LayoutInflater inflater = this.getLayoutInflater();
+//        View view = inflater.inflate(R.layout.dialog_editun,null);
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setView(view);
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
         final EditText et = new EditText(this);
         et.setInputType(InputType.TYPE_CLASS_NUMBER);
         new AlertDialog.Builder(this)
@@ -85,6 +92,8 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 })
                 .setNegativeButton("取消",null)
                 .show();
+
+
     }
 
     public void showchangePasswordDialog(){

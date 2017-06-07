@@ -18,6 +18,7 @@ import valderfields.rjb_admin.Model.jxJSON;
 import valderfields.rjb_admin.View.LookupUserActivity;
 
 /**
+ * 查看用户信息
  * Created by 11650 on 2017/5/26.
  */
 
@@ -49,7 +50,6 @@ public class LookupUserPresenter {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.code() == 200) {
                     userBeanList = jxJSON.jxUser(response.body().string());
-                    Log.i("1", userBeanList.toString());
                     dialog.dismiss();
                     updataListData();
                 } else {

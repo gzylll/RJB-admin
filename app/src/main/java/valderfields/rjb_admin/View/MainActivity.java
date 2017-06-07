@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View uploadIMG;
     private View setting;
     private View lookupUser;
+    private View admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setting.setOnClickListener(this);
         lookupUser = findViewById(R.id.lookupUser);
         lookupUser.setOnClickListener(this);
+        admin = findViewById(R.id.administrator);
+        admin.setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.Setting:
                 intent = new Intent(this,SettingActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.administrator:
+                intent = new Intent(this,AdminActivity.class);
                 startActivity(intent);
                 break;
         }
