@@ -62,12 +62,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void showImgCountDialog(){
-//        LayoutInflater inflater = this.getLayoutInflater();
-//        View view = inflater.inflate(R.layout.dialog_editun,null);
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setView(view);
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
+
         final EditText et = new EditText(this);
         et.setInputType(InputType.TYPE_CLASS_NUMBER);
         new AlertDialog.Builder(this)

@@ -19,4 +19,5 @@
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="changePassword">管理员修改用户密码</string>
+    <string name="adminInfo">个人信息</string>
 </resources>
