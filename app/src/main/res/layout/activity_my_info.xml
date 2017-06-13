@@ -11,23 +11,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <!--用户名-->
+        <!--用户ID-->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:id="@+id/myname"
-            android:onClick="setOnClick1">
+            android:id="@+id/myid">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="用户名"/>
+                android:text="@string/aid"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ttw"
+                android:id="@+id/AID"
                 android:layout_alignParentEnd="true"/>
 
         </RelativeLayout>
@@ -37,20 +36,24 @@
             android:layout_height="1dp"
             android:background="#cccbcb"/>
 
-
-        <!--密码-->
+        <!--用户名-->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:id="@+id/mypwd"
-            android:onClick="setOnClick2">
+            android:id="@+id/myname"
+            android:onClick="changeName">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="密码"/>
+                android:text="@string/UN"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/UN"
+                android:layout_alignParentEnd="true"/>
 
         </RelativeLayout>
 
@@ -59,7 +62,26 @@
             android:layout_height="1dp"
             android:background="#cccbcb"/>
 
+        <!--密码-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:id="@+id/mypwd"
+            android:onClick="changePassword">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pw"/>
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#cccbcb"/>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

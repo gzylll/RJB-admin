@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View uploadIMG;
     private View setting;
     private View lookupUser;
+    private View addAdmin;
     private TextView username;
 
     @Override
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setting.setOnClickListener(this);
         lookupUser = findViewById(R.id.lookupUser);
         lookupUser.setOnClickListener(this);
+        addAdmin = findViewById(R.id.administrator);
+        addAdmin.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.userMessage:
                 intent = new Intent(this,MyInfoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.administrator:
+                intent = new Intent(this,AdminActivity.class);
                 startActivity(intent);
                 break;
         }

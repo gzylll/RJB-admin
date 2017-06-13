@@ -27,6 +27,8 @@ public class NetUtil {
     public static OkHttpClient PersonalOkHttpCilent = new OkHttpClient.Builder().build();
     //更新用户信息
     public static String updateUserUrl = host+"/UpdateServlet";
+    //更新我的信息
+    public static String updateMyInfoUrl = host+"/AdminUpdateServlet";
     //登录
     public static String loginUrl = host+"/AdminLoginServlet";
 
@@ -78,14 +80,15 @@ public class NetUtil {
                 .build();
     }
 
-    public static Request getUpdateUserRequest(String name,String password)
+    public static Request getUpdateMyInfoRequest(String name, String aid,String password)
     {
         RequestBody body = new FormBody.Builder()
-                .add("username",name)
+                .add("name",name)
+                .add("aid",aid)
                 .add("password",password)
                 .build();
         return new Request.Builder()
-                .url(updateUserUrl)
+                .url(updateMyInfoUrl)
                 .post(body)
                 .build();
     }
