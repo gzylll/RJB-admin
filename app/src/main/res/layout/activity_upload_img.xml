@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="valderfields.rjb_admin.View.UploadIMGActivity">
+    tools:context="valderfields.rjb_admin.view.UploadIMGActivity">
 
     <GridView
         android:id="@+id/IMG_area"

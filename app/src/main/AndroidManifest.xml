@@ -13,28 +13,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".view.LoadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.LoginActivity"/>
+        <activity android:name=".view.MainActivity"/>
         <activity
-            android:name=".View.UploadIMGActivity"
-            android:parentActivityName=".View.MainActivity" />
+            android:name=".view.UploadIMGActivity"
+            android:parentActivityName=".view.MainActivity" />
         <!-- Image Selector Entry -->
         <activity
             android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".View.SettingActivity"
-            android:parentActivityName=".View.MainActivity" />
+            android:name=".view.SettingActivity"
+            android:parentActivityName=".view.MainActivity" />
         <activity
-            android:name=".View.LookupUserActivity"
-            android:parentActivityName=".View.MainActivity" />
-        <activity android:name=".View.AdminActivity"
-            android:parentActivityName=".View.MainActivity"></activity>
+            android:name=".view.LookupUserActivity"
+            android:parentActivityName=".view.MainActivity" />
+        <activity android:name=".view.AdminActivity"
+            android:parentActivityName=".view.MainActivity"/>
+        <activity android:name=".view.MyInfoActivity"
+            android:parentActivityName=".view.MainActivity"/>
     </application>
 
 </manifest>
