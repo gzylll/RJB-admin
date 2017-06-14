@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,LoginActivity.class);
                 MainActivity.this.startActivity(intent);
+                finish();
             }
         });
         isExit.setNegativeButton("取消", new DialogInterface.OnClickListener() {
