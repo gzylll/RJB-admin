@@ -144,14 +144,21 @@ public class NetUtil {
     }
 
 
+    /**
+     * 增加管理员
+     * @param name 用户名
+     * @param password 密码
+     * @return Request
+     */
     public static Request getAddAdminRequest(String name,String password)
     {
         RequestBody body = new FormBody.Builder()
                 .add("name",name)
+                .add("isroot","false")
                 .add("password",password)
                 .build();
         return new Request.Builder()
-                .url(loginUrl)
+                .url(addAdminUrl)
                 .post(body)
                 .build();
     }

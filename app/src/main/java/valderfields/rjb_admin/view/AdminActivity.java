@@ -1,5 +1,6 @@
 package valderfields.rjb_admin.view;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -10,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ public class AdminActivity extends AppCompatActivity {
     private SimpleAdapter adapter;
     //list中显示的用户数据
     private List<HashMap<String,String>> dataList = new ArrayList<>();
+    public ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class AdminActivity extends AppCompatActivity {
 
     private void initView()
     {
+        progressDialog = new ProgressDialog(this);
         adminList = (ListView)findViewById(R.id.adminList);
         //生成适配器
         adapter = new SimpleAdapter(this,
@@ -59,26 +63,56 @@ public class AdminActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void addAdmin(View v){
+    public void addAdmin(){
         LayoutInflater inflater = this.getLayoutInflater();
-        View view = inflater.inflate(R.layout.activity_admin,null);
+        View view = inflater.inflate(R.layout.dialog_editadmin,null);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(view);
         final AlertDialog dialog = builder.create();
         dialog.show();
 
-
+        final EditText username = (EditText) view.findViewById(R.id.username);
+        final EditText pwd1 = (EditText) view.findViewById(R.id.pwd);
+        final EditText pwd2 = (EditText) view.findViewById(R.id.pwd_confirm);
+        TextView confirm = (TextView)view.findViewById(R.id.editAdmin_yes);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(username.getText().toString().equals("")||pwd1.getText().toString().equals("")
+                        ||pwd2.getText().toString().equals(""))
+                {
+                    Toast.makeText(AdminActivity.this,"输入不能为空",Toast.LENGTH_SHORT).show();
+                }
+                else if(!pwd1.getText().toString().equals(pwd2.getText().toString()))
+                {
+                    Toast.makeText(AdminActivity.this,"新密码不一致",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    //提交密码
+                    dialog.dismiss();
+                    progressDialog.setMessage("增加新管理员");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+                    presenter.addAdmin(username.getText().toString(),pwd1.getText().toString());
+                }
+            }
+        });
+        TextView cancel = (TextView)view.findViewById(R.id.editAdmin_no);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==R.id.add){
-            if(User.getIsRoot())
-            {
-
-            }
-            else
-            {
+            if(User.getIsRoot()) {
+                addAdmin();
+            } else {
                 Toast.makeText(this,"您没有权限添加管理员",Toast.LENGTH_SHORT).show();
             }
         }

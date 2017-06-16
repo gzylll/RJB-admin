@@ -1,6 +1,7 @@
 package valderfields.rjb_admin.presenter;
 
 import android.app.ProgressDialog;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -72,5 +73,40 @@ public class AdminPresenter {
             dataList.add(data);
         }
         adminActivity.updateData(dataList);
+    }
+
+    public void addAdmin(String name,String password){
+        NetUtil.PersonalOkHttpCilent.newCall(
+                NetUtil.getAddAdminRequest(name,password)
+        ).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                ShowMessage("onFailure:"+e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if(response.code()==200){
+                    String s = response.body().string();
+                    if(s.equals("true")){
+                        adminActivity.progressDialog.dismiss();
+                        ShowMessage("添加成功");
+                        initData();
+                    } else {
+                        adminActivity.progressDialog.dismiss();
+                        ShowMessage("添加失败");
+                    }
+                } else {
+                    ShowMessage("code"+response.code());
+                }
+
+            }
+        });
+    }
+
+    public void ShowMessage(String m){
+        Looper.prepare();
+        Toast.makeText(adminActivity,m,Toast.LENGTH_SHORT).show();
+        Looper.loop();
     }
 }
