@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:onClick="addAdmin"
         android:icon="@drawable/add"
         android:title="@string/addAdmin"
         app:showAsAction="always"/>

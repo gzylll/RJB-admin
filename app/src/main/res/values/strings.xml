@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RJB-2</string>
+    <string name="app_name">MPL</string>
     <string name="uploadimg">上传图片</string>
     <string name="export">导出标签</string>
     <string name="users">查看用户</string>
@@ -27,7 +27,7 @@
     <string name="oldPassword">输入原密码</string>
     <string name="newPassword">输入新密码</string>
     <string name="modifyNewPassword">确认新密码</string>
-    <string name="loginTitle">图片分发</string>
+    <string name="loginTitle">图片管理</string>
     <string name="inputUserName">请输入用户名</string>
     <string name="inputPassword">请输入密码</string>
     <string name="autoLogin">自动登录</string>
