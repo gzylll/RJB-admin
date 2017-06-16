@@ -62,4 +62,23 @@ public class jxJSON {
         }
         return true;
     }
+
+    public static List<AdminBean> jxAdminData(String data){
+        List<AdminBean> adminBeen = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(data);
+            for(int i=0;i<jsonArray.length();i++)
+            {
+                JSONObject object = jsonArray.getJSONObject(i);
+                AdminBean bean = new AdminBean();
+                bean.setAID(object.getString("aid"));
+                bean.setName(object.getString("name"));
+                bean.setRoot(object.getBoolean("isroot"));
+                adminBeen.add(bean);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return adminBeen;
+    }
 }

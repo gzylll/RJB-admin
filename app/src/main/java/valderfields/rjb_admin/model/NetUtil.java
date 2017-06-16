@@ -31,6 +31,16 @@ public class NetUtil {
     public static String updateMyInfoUrl = host+"/AdminUpdateServlet";
     //登录
     public static String loginUrl = host+"/AdminLoginServlet";
+    //获取管理员信息
+    public static String adminInfoUrl = host+"/QueryAdminServlet";
+    //增加管理员
+    public static String addAdminUrl = host+"/AdminAddServlet";
+
+    public static void saveSession(String header)
+    {
+        String[] infos = header.split(";");
+        User.setSession(infos[0]);
+    }
 
     /**
      * 获取上传图片的请求
@@ -65,21 +75,28 @@ public class NetUtil {
                 .build();
     }
 
+
     /**
      * 获取用户列表reuqest
      */
-    public static Request getUserRequest(String name,String password)
+    public static Request getUserRequest()
     {
-        RequestBody body = new FormBody.Builder()
-                .add("name",name)
-                .add("password",password)
-                .build();
+        RequestBody body = new FormBody.Builder().build();
         return new Request.Builder()
+                .addHeader("Cookie",User.getSession())
                 .url(userUrl)
                 .post(body)
                 .build();
     }
 
+
+    /**
+     * 修改信息
+     * @param name 用户名
+     * @param aid ID
+     * @param password 密码
+     * @return
+     */
     public static Request getUpdateMyInfoRequest(String name, String aid,String password)
     {
         RequestBody body = new FormBody.Builder()
@@ -88,12 +105,46 @@ public class NetUtil {
                 .add("password",password)
                 .build();
         return new Request.Builder()
+                .addHeader("Cookie",User.getSession())
                 .url(updateMyInfoUrl)
                 .post(body)
                 .build();
     }
 
+    /**
+     * 登录
+     * @param name 用户名
+     * @param password 密码
+     * @return Request
+     */
     public static Request getLoginRequest(String name,String password)
+    {
+        RequestBody body = new FormBody.Builder()
+                .add("name",name)
+                .add("password",password)
+                .build();
+        return new Request.Builder()
+                .url(loginUrl)
+                .post(body)
+                .build();
+    }
+
+    /**
+     * 获取管理员列表
+     * @return Request
+     */
+    public static Request getAdminInfoRequest()
+    {
+        RequestBody body = new FormBody.Builder().build();
+        return new Request.Builder()
+                .addHeader("Cookie",User.getSession())
+                .url(adminInfoUrl)
+                .post(body)
+                .build();
+    }
+
+
+    public static Request getAddAdminRequest(String name,String password)
     {
         RequestBody body = new FormBody.Builder()
                 .add("name",name)

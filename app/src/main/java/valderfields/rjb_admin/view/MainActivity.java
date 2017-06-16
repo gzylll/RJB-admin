@@ -1,7 +1,11 @@
 package valderfields.rjb_admin.view;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -17,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View lookupUser;
     private View addAdmin;
     private TextView username;
+    private View logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lookupUser.setOnClickListener(this);
         addAdmin = findViewById(R.id.administrator);
         addAdmin.setOnClickListener(this);
+        logout = findViewById(R.id.Logout);
+        logout.setOnClickListener(this);
     }
 
     @Override
@@ -64,6 +71,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this,AdminActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.Logout:
+                Logout();
+                break;
         }
+    }
+
+    private void Logout(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("确定要退出登录么？");
+        builder.setNegativeButton("取消",null);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        Dialog dialog = builder.create();
+        dialog.show();
     }
 }

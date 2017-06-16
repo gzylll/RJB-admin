@@ -1,6 +1,7 @@
 package valderfields.rjb_admin.presenter;
 
 import android.app.ProgressDialog;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -39,11 +40,11 @@ public class LookupUserPresenter {
         dialog.setCancelable(false);
         dialog.show();
         NetUtil.PersonalOkHttpCilent.newCall(
-                NetUtil.getUserRequest("admin", "admin")
+                NetUtil.getUserRequest()
         ).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Toast.makeText(activity, "onFailure", Toast.LENGTH_SHORT).show();
+                ShowMessage("onFailure");
             }
 
             @Override
@@ -53,7 +54,7 @@ public class LookupUserPresenter {
                     dialog.dismiss();
                     updataListData();
                 } else {
-                    Toast.makeText(activity, "获取失败", Toast.LENGTH_SHORT).show();
+                    ShowMessage("获取失败");
                 }
             }
         });
@@ -75,5 +76,11 @@ public class LookupUserPresenter {
     public UserBean getUserBeanDataAt(int position)
     {
         return userBeanList.get(position);
+    }
+
+    public void ShowMessage(String m){
+        Looper.prepare();
+        Toast.makeText(activity,m,Toast.LENGTH_SHORT).show();
+        Looper.loop();
     }
 }

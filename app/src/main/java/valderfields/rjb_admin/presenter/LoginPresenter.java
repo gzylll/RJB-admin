@@ -52,6 +52,7 @@ public class LoginPresenter extends Observable{
                             String s = response.body().string();
                             Log.e("return",s);
                             if(jxJSON.jxLoginData(s)){
+                                NetUtil.saveSession(response.header("Set-Cookie"));
                                 setChanged();
                                 notifyObservers("Login Success");
                             }else{

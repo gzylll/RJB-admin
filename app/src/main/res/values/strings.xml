@@ -36,4 +36,5 @@
     <string name="aid">用户ID</string>
     <string name="pw">密码</string>
     <string name="UN">用户名</string>
+    <string name="root">根用户</string>
 </resources>

@@ -4,5 +4,6 @@
     <item
         android:icon="@drawable/add"
         android:title="@string/addAdmin"
+        android:id="@+id/add"
         app:showAsAction="always"/>
 </menu>

@@ -27,6 +27,7 @@ public class MyInfoActivity extends AppCompatActivity implements Observer{
 
     TextView aid;
     TextView username;
+    TextView root;
     ProgressDialog progressDialog;
     MyInfoPresenter presenter;
 
@@ -39,13 +40,20 @@ public class MyInfoActivity extends AppCompatActivity implements Observer{
 
     public void initView(){
         aid = (TextView)findViewById(R.id.AID);
-        aid.setText(User.getUID());
+        root = (TextView)findViewById(R.id.isRoot);
         username = (TextView)findViewById(R.id.UN);
-        username.setText(User.getUsername());
         progressDialog = new ProgressDialog(this);
         presenter = new MyInfoPresenter(this);
         presenter.addObserver(this);
         getSupportActionBar().setTitle("我的信息");
+        initDdata();
+    }
+
+    public void initDdata()
+    {
+        aid.setText(User.getUID());
+        root.setText(User.getIsRoot()?"是":"否");
+        username.setText(User.getUsername());
     }
     
     public void changeName(View v){
@@ -66,7 +74,6 @@ public class MyInfoActivity extends AppCompatActivity implements Observer{
                 progressDialog.setMessage("修改用户名");
                 progressDialog.setCancelable(false);
                 progressDialog.show();
-                Log.e("11",name.getText().toString());
                 presenter.changeName(name.getText().toString());
             }
         });
@@ -141,6 +148,7 @@ public class MyInfoActivity extends AppCompatActivity implements Observer{
             else{
                 Toast.makeText(MyInfoActivity.this,arg.toString(),Toast.LENGTH_SHORT).show();
             }
+            initDdata();
             Looper.loop();
         }
     }

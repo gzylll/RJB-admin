@@ -14,9 +14,8 @@ public class User {
     private static String _name;
     private static String _phone;
     private static String _password;
-    private static Boolean _isRemember;
-    private static Boolean _isAuto;
     private static Boolean _isRoot;
+    private static String _session;
 
     private static SharedPreferences preferences;
     private static SharedPreferences.Editor editor;
@@ -28,6 +27,20 @@ public class User {
         _name = preferences.getString("username","");
         _password = preferences.getString("password","");
         _isRoot = preferences.getBoolean("isRoot",false);
+        _session = preferences.getString("session","");
+    }
+
+    public static String getSession() {
+        if(_session!=null)
+            return _session;
+        else
+            return preferences.getString("session","");
+    }
+
+    public static void setSession(String session){
+        _session = session;
+        editor.putString("session",session);
+        editor.commit();
     }
 
     public static void setIsRoot(Boolean _isRoot) {

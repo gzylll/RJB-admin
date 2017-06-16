@@ -1,10 +1,21 @@
 package valderfields.rjb_admin.presenter;
 
 import android.app.ProgressDialog;
+import android.util.Log;
+import android.widget.Toast;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import valderfields.rjb_admin.model.AdminBean;
+import valderfields.rjb_admin.model.NetUtil;
+import valderfields.rjb_admin.model.UserBean;
+import valderfields.rjb_admin.model.jxJSON;
 import valderfields.rjb_admin.view.AdminActivity;
 
 /**
@@ -30,5 +41,36 @@ public class AdminPresenter {
         dialog.setIndeterminate(true);
         dialog.setCancelable(false);
         dialog.show();
+        NetUtil.PersonalOkHttpCilent.newCall(
+                NetUtil.getAdminInfoRequest()
+        ).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Toast.makeText(adminActivity, "onFailure", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.code() == 200) {
+                    adminBeanList = jxJSON.jxAdminData(response.body().string());
+                    dialog.dismiss();
+                    updataListData();
+                } else {
+                    Toast.makeText(adminActivity, "获取失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void updataListData() {
+        List<HashMap<String, String>> dataList = new ArrayList<>();
+        for (int i = 0; i < adminBeanList.size(); i++) {
+            AdminBean bean = adminBeanList.get(i);
+            HashMap<String, String> data = new HashMap<>();
+            data.put("username", bean.getName());
+            data.put("uid", bean.getAID());
+            dataList.add(data);
+        }
+        adminActivity.updateData(dataList);
     }
 }
