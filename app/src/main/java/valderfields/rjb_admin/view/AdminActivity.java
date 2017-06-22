@@ -90,7 +90,7 @@ public class AdminActivity extends AppCompatActivity {
                 }
                 else if(!pwd1.getText().toString().equals(pwd2.getText().toString()))
                 {
-                    Toast.makeText(AdminActivity.this,"新密码不一致",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminActivity.this,"密码不一致",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {

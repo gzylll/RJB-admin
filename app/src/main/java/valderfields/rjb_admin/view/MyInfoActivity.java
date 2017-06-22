@@ -99,7 +99,8 @@ public class MyInfoActivity extends AppCompatActivity implements Observer{
         final EditText newpwd1 = (EditText) view.findViewById(R.id.newpwd1);
         final EditText newpwd2 = (EditText) view.findViewById(R.id.newpwd2);
         TextView confirm = (TextView)view.findViewById(R.id.editPassword_yes);
-        confirm.setOnClickListener(new View.OnClickListener() {
+        confirm.setOnClickListener(
+                new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(oldpwd.getText().toString().equals("")||newpwd1.getText().toString().equals("")
