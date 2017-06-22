@@ -16,11 +16,12 @@
         <activity android:name=".view.LoadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.LoginActivity"/>
-        <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.MainActivity" />
         <activity
             android:name=".view.UploadIMGActivity"
             android:parentActivityName=".view.MainActivity" />
@@ -34,9 +35,14 @@
         <activity
             android:name=".view.LookupUserActivity"
             android:parentActivityName=".view.MainActivity" />
-        <activity android:name=".view.AdminActivity"
-            android:parentActivityName=".view.MainActivity"/>
-        <activity android:name=".view.MyInfoActivity"
+        <activity
+            android:name=".view.AdminActivity"
+            android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.MyInfoActivity"
+            android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.OutputTagsActivity"
             android:parentActivityName=".view.MainActivity"/>
     </application>
 

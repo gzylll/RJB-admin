@@ -35,6 +35,9 @@ public class NetUtil {
     public static String adminInfoUrl = host+"/QueryAdminServlet";
     //增加管理员
     public static String addAdminUrl = host+"/AdminAddServlet";
+    //导出标签
+    public static String tagUrl = host+"/QueryImagesServlet";
+
 
     public static void saveSession(String header)
     {
@@ -158,9 +161,21 @@ public class NetUtil {
                 .add("password",password)
                 .build();
         return new Request.Builder()
+                .addHeader("Cookie",User.getSession())
                 .url(addAdminUrl)
                 .post(body)
                 .build();
     }
 
+    public static Request getTagRequest(String search)
+    {
+        RequestBody body = new FormBody.Builder()
+                .add("index",search)
+                .build();
+        return new Request.Builder()
+                .addHeader("Cookie",User.getSession())
+                .url(tagUrl)
+                .post(body)
+                .build();
+    }
 }

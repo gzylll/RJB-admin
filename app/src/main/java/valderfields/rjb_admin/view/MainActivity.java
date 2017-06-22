@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View setting;
     private View lookupUser;
     private View addAdmin;
+    private View exportTag;
     private TextView username;
     private View logout;
 
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addAdmin.setOnClickListener(this);
         logout = findViewById(R.id.Logout);
         logout.setOnClickListener(this);
+        exportTag = findViewById(R.id.exportTag);
+        exportTag.setOnClickListener(this);
     }
 
     @Override
@@ -69,6 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.administrator:
                 intent = new Intent(this,AdminActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.exportTag:
+                intent = new Intent(this,OutputTagsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.Logout:

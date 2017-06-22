@@ -38,4 +38,6 @@
     <string name="UN">用户名</string>
     <string name="modifyPassword">确认密码</string>
     <string name="root">根用户</string>
+    <string name="picName">图片名</string>
+    <string name="finishedTime">结束时间</string>
 </resources>

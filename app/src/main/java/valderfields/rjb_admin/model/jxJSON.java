@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -80,5 +81,26 @@ public class jxJSON {
             e.printStackTrace();
         }
         return adminBeen;
+    }
+
+    public static List<HashMap<String,String>> jxTagsData(String data){
+        List<HashMap<String,String>> dataList = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray jsonArray = jsonObject.getJSONArray("images");
+            for(int i=0;i<jsonArray.length();i++){
+                HashMap<String,String> map = new HashMap<>();
+                JSONObject object = jsonArray.getJSONObject(i);
+                map.put("picture_name",object.getString("picture_name"));
+                if(object.has("finish_time"))
+                    map.put("finish_time",object.getString("finish_time"));
+                else
+                    map.put("finish_time","");
+                dataList.add(map);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return dataList;
     }
 }
