@@ -38,6 +38,7 @@ public class NetUtil {
     //导出标签
     public static String tagUrl = host+"/QueryImagesServlet";
 
+    public   static String getUpdateUserInfoUrl = host+"/UpdateUser";
 
     public static void saveSession(String header)
     {
@@ -176,6 +177,14 @@ public class NetUtil {
                 .addHeader("Cookie",User.getSession())
                 .url(tagUrl)
                 .post(body)
+                .build();
+    }
+
+    public static Request getRequestWithSession(String url, RequestBody requestBody)
+    {
+        return new Request.Builder()
+                .addHeader("Cookie",User.getSession().split(";")[0])
+                .url(url).post(requestBody)
                 .build();
     }
 }
